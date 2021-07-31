@@ -1,26 +1,14 @@
-function rot13(str) { // LBH QVQ VG!
-    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let decode = '';
-  
-    for(let i = 0; i < str.length; i++){
-        let letter = str.charAt(i);
-  
-         if(str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90){
-            if((alphabet.indexOf(letter) - 13) < 0){
-                decode += alphabet.charAt((alphabet.indexOf(letter)-13+26 ));
-            }else {
-                decode += alphabet.charAt(alphabet.indexOf(letter) - 13);
-            }
-        }else {
-            decode += letter;
-        }
-  
-    }
-  
-    console.log(decode);
-    return decode;
+function rot13(str) {
+  let x = ""
+  for (let char of str){
+    if(char.codePointAt(0) > 64 && char.codePointAt(0) < 91){
+      let decode = char.codePointAt(0) - 13;
+      if(decode < 65){
+        decode += 26;
+        x += String.fromCodePoint(decode);
+      }else{x += String.fromCodePoint(decode);}
+    }else{x += char;}
   }
-  
-// Change the inputs below to test
 
-rot13("SERR PBQR PNZC");
+  return x;
+}
