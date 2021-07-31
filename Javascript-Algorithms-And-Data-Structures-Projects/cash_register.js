@@ -61,8 +61,7 @@ var denom = [
       output.status = 'INSUFFICIENT_FUNDS';
       return output;
     }
-  
-    // Here is your change, ma'am.
+
     output.status = 'OPEN';
     output.change = change_arr;
     return output;
