@@ -1,19 +1,13 @@
 function convertToRoman(num) {
+  let m = [ "", "M", "MM", "MMM" ]
+  let c = [ "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+  let x = [ "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" ];
+  let i = [ "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
 
-    var decimalValue = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
-     var romanNumeral = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
-   
-     var romanized = '';
-   
-     for (var index = 0; index < decimalValue.length; index++) {
-       while (decimalValue[index] <= num) {
-         romanized += romanNumeral[index];
-         num -= decimalValue[index];
-       }
-     }
-   
-     return romanized;
+  let thousands = m[parseInt(num / 1000)];
+  let hundereds = c[parseInt((num % 1000) / 100)];
+  let tens =  x[parseInt((num % 100) / 10)];
+  let ones = i[num % 10];
+  return (thousands + hundereds + tens + ones );
+  
 }
-   
-x = convertToRoman(344)
-console.log(x)
